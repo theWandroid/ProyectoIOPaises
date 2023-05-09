@@ -1,0 +1,8 @@
+C:\Users\Andrei\Documents\GitHub\ProyectoIOPaises\ProyectoIOPaises\ProyectoIOPaises\bin\Debug\ProyectoIOPaises.exe.config
+C:\Users\Andrei\Documents\GitHub\ProyectoIOPaises\ProyectoIOPaises\ProyectoIOPaises\bin\Debug\ProyectoIOPaises.exe
+C:\Users\Andrei\Documents\GitHub\ProyectoIOPaises\ProyectoIOPaises\ProyectoIOPaises\bin\Debug\ProyectoIOPaises.pdb
+C:\Users\Andrei\Documents\GitHub\ProyectoIOPaises\ProyectoIOPaises\ProyectoIOPaises\obj\Debug\ProyectoIOPaises.csproj.AssemblyReference.cache
+C:\Users\Andrei\Documents\GitHub\ProyectoIOPaises\ProyectoIOPaises\ProyectoIOPaises\obj\Debug\ProyectoIOPaises.csproj.SuggestedBindingRedirects.cache
+C:\Users\Andrei\Documents\GitHub\ProyectoIOPaises\ProyectoIOPaises\ProyectoIOPaises\obj\Debug\ProyectoIOPaises.csproj.CoreCompileInputs.cache
+C:\Users\Andrei\Documents\GitHub\ProyectoIOPaises\ProyectoIOPaises\ProyectoIOPaises\obj\Debug\ProyectoIOPaises.exe
+C:\Users\Andrei\Documents\GitHub\ProyectoIOPaises\ProyectoIOPaises\ProyectoIOPaises\obj\Debug\ProyectoIOPaises.pdb
