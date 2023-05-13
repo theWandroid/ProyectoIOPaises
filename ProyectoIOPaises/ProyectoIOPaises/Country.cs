@@ -27,6 +27,8 @@ namespace ProyectoIOPaises
             name = theName;
             capital = theCapital;
         }
+
+
     }
 
 

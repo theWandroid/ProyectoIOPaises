@@ -11,23 +11,29 @@ namespace ProyectoIOPaises
     {
         public int numCountries = 0;
         public Country[] countryList = new Country[100];
-
+        
+      
         public void InsertCountry(Country theCountry)
         {
+            //Console.WriteLine("El pais se llama {0}", theCountry.name);
             countryList[numCountries] = theCountry;
+            Console.WriteLine(countryList[numCountries].name);
+            Console.WriteLine(numCountries);
             numCountries++;
         }
-
 
         public void ListCountries()
         {
             int i = 0;
+            Console.WriteLine(numCountries);
+            //Console.WriteLine("Hay {0} paises en la lista", countryList[i].name);
             while (i < countryList.Length && countryList[i] != null)
             {
                 Console.WriteLine("El pais es {0} y su capital es {1}.", countryList[i].name, countryList[i].capital);
                 i++;
             }
         }
+
 
         public void SaveDataOnFile(string fileName)
         {
@@ -42,7 +48,8 @@ namespace ProyectoIOPaises
         {
             StreamReader file = new StreamReader(fileName, Encoding.Default);
             string s = file.ReadLine();
-            while(s != null)
+
+            while (s != null)
             {
                 Console.WriteLine(s);
                 string[] words = s.Split('/');
