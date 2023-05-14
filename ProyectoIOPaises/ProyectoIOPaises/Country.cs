@@ -10,15 +10,15 @@ namespace ProyectoIOPaises
     {
         public string name = "España";
         public string capital = "Madrid";
-        public Int64 population = 47615034;
-        public int surface = 505944;
+        public string population = "47.615.034";
+        public string surface = "505.944";
 
         /// <summary>
         /// Contruye un pais
         /// </summary>
         /// <param name="name">Nombre del pais</param>
         /// <param name="capital">Capital del pais</param>
-        public Country(string theName, string theCapital, Int64 thePopulation, int theSurface)
+        public Country(string theName, string theCapital, string thePopulation, string theSurface)
         {
             this.name = theName;
             this.capital = theCapital;

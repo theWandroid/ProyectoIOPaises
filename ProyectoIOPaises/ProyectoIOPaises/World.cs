@@ -16,10 +16,7 @@ namespace ProyectoIOPaises
       
         public void InsertCountry(Country theCountry)
         {
-            //Console.WriteLine("El pais se llama {0}", theCountry.name);
             countryList[numCountries] = theCountry;
-            //Console.WriteLine(countryList[numCountries].name);
-            //Console.WriteLine(numCountries);
             numCountries++;
         }
 
@@ -30,7 +27,7 @@ namespace ProyectoIOPaises
             //Console.WriteLine("Hay {0} paises en la lista", countryList[i].name);
             while (i < countryList.Length && countryList[i] != null)
             {{}
-                string[] textLines = new string[] { "Pais: "+ CultureInfo.InvariantCulture.TextInfo.ToTitleCase(countryList[i].name) +". Capital:" + CultureInfo.InvariantCulture.TextInfo.ToTitleCase(countryList[i].capital)+ ". Población: " + countryList[i].population+ ". Superficie: " + countryList[i].surface };
+                string[] textLines = new string[] { "Pais => "+ CultureInfo.InvariantCulture.TextInfo.ToTitleCase(countryList[i].name) +"   Capital:" + CultureInfo.InvariantCulture.TextInfo.ToTitleCase(countryList[i].capital)+ "    Población: " + countryList[i].population+ "    Superficie => " + countryList[i].surface };
                 Program.WriteCharByChar(textLines);
                 i++;
             }
@@ -47,9 +44,9 @@ namespace ProyectoIOPaises
             Program.WriteCharByChar(textLines[1]);
             string countryCapital = Console.ReadLine();
             Program.WriteCharByChar(textLines[2]);
-            Int64 countryPopulation = Convert.ToInt64(Console.ReadLine());
+            string countryPopulation = Console.ReadLine();
             Program.WriteCharByChar(textLines[3]);
-            int countrySurface = Convert.ToInt32(Console.ReadLine());
+            string countrySurface = Console.ReadLine();
             int i = 0;
             bool found = false;
             //Para saber si el nombre del país ya esta en la lista
@@ -102,10 +99,6 @@ namespace ProyectoIOPaises
         public void SaveDataOnFile(string fileName, Country theCountry)
         {
             StreamWriter file = new StreamWriter(fileName, true);
-            //string[] textLines = new string[] { "Escribe un pais que quieras introducir seguido de su capital separado por /." };
-            //Program.WriteCharByChar(textLines);
-            //string s = Console.ReadLine();
-            //file.WriteLine(s);
             file.WriteLine(theCountry.name + "/" + theCountry.capital+ "/" +theCountry.population+"/"+theCountry.surface);
             file.Close();
         }
@@ -119,15 +112,7 @@ namespace ProyectoIOPaises
             {
                 Console.WriteLine(s);
                 string[] words = s.Split('/');
-                InsertCountry(new Country(words[0], words[1], Convert.ToInt64(words[2]), Convert.ToInt32(words[3])));
-                /*
-                int i = 0;
-                while( i < words.Length)
-                {
-                    Console.WriteLine(words[i]);
-                    i++;
-                }
-                */
+                InsertCountry(new Country(words[0], words[1], words[2], words[3]));
                 s = file.ReadLine();
 
             }

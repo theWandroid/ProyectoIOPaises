@@ -52,8 +52,6 @@ namespace ProyectoIOPaises
             while(theOption != 1 && theOption != 2 && theOption != 3 && theOption != 4)
             {
                 Console.Clear();
-                float u = 123232f;
-                Console.WriteLine(u);
                 string[] textLines = new string[] { "Menu:",
                                                     "1- Añadir país", 
                                                     "2 - Buscar país.", 

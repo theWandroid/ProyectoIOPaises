@@ -1,2 +1,3 @@
-noruega/oslo/5488984/323802
-suecia/estocolmo/10343403/450295
+noruega/oslo/5.488.984/323.802
+suecia/estocolmo/10.343.403/450.295
+finlandia/helsinki/5.549.184/338.145
