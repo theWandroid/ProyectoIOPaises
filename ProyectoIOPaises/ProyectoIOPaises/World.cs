@@ -20,14 +20,12 @@ namespace ProyectoIOPaises
             numCountries++;
         }
 
-        public void ListCountries()
+        public void ListCountries(Country[] theCountryList)
         {
             int i = 0;
-            Console.WriteLine(numCountries);
-            //Console.WriteLine("Hay {0} paises en la lista", countryList[i].name);
-            while (i < countryList.Length && countryList[i] != null)
+            while (i < theCountryList.Length && theCountryList[i] != null)
             {{}
-                string[] textLines = new string[] { "Pais => "+ CultureInfo.InvariantCulture.TextInfo.ToTitleCase(countryList[i].name) +"   Capital:" + CultureInfo.InvariantCulture.TextInfo.ToTitleCase(countryList[i].capital)+ "    Población: " + countryList[i].population+ "    Superficie => " + countryList[i].surface };
+                string[] textLines = new string[] { "Pais => "+ CultureInfo.InvariantCulture.TextInfo.ToTitleCase(theCountryList[i].name) +"   Capital:" + CultureInfo.InvariantCulture.TextInfo.ToTitleCase(theCountryList[i].capital)+ "    Población: " + theCountryList[i].population+ "    Superficie => " + theCountryList[i].surface };
                 Program.WriteCharByChar(textLines);
                 i++;
             }
@@ -96,12 +94,40 @@ namespace ProyectoIOPaises
         }
 
 
+        public void OrderByPopulation()
+        {
+            int i = 1,
+                j = 0;
+            Country[] orderedByPopulationCountryList = new Country [countryList.Length];
+            orderedByPopulationCountryList[i] = countryList[i];
+            while( i < countryList.Length && countryList[i] != null)
+            {
+                orderedByPopulationCountryList[0] = countryList[0];
+                if (countryList[i] != null && orderedByPopulationCountryList[i] != null)
+                {
+                   if (Convert.ToSingle(countryList[i].population) > Convert.ToSingle(orderedByPopulationCountryList[i].population))
+                    { 
+                        orderedByPopulationCountryList[i + 1] = orderedByPopulationCountryList[i];
+                    }
+                    orderedByPopulationCountryList[i] = countryList[i];
+
+                }
+                Console.WriteLine(i);
+                i++;
+                
+            }
+            ListCountries(orderedByPopulationCountryList);
+        }
+
+
         public void SaveDataOnFile(string fileName, Country theCountry)
         {
             StreamWriter file = new StreamWriter(fileName, true);
             file.WriteLine(theCountry.name + "/" + theCountry.capital+ "/" +theCountry.population+"/"+theCountry.surface);
             file.Close();
         }
+
+
 
         public void ReadDataFromFile(string fileName)
         {

@@ -36,7 +36,7 @@ namespace ProyectoIOPaises
             int option = 0;
             theWorld.ReadDataFromFile("Countries.txt");
            
-            while(option != 4)
+            while(option != 5)
             {
                 option = 0;
                 option = ShowMenu(option);
@@ -55,15 +55,16 @@ namespace ProyectoIOPaises
                 string[] textLines = new string[] { "Menu:",
                                                     "1- Añadir país", 
                                                     "2 - Buscar país.", 
-                                                    "3 - Listar paises.", 
-                                                    "4 - Finalizar",
+                                                    "3 - Listar paises.",
+                                                    "4 - Ordenar por población",
+                                                    "5 - Finalizar",
                                                     "Intruduzca la opción:"};
                 WriteCharByChar(textLines);
 
             string optionString = Console.ReadLine();
 
             if(!Int32.TryParse(optionString, out theOption)) theOption = 0;
-            if (theOption < 1 || theOption > 4) {
+            if (theOption < 1 || theOption > 5) {
                     textLines = new string[] {  "La opción debe estar comprendida entre 1 y 4" ,
                                                 "Pulse cualquier tecla"};
                     WriteCharByChar(textLines);
@@ -88,9 +89,13 @@ namespace ProyectoIOPaises
                     break;
                 case 3:
                     WriteCharByChar("Ha elegido listar países");
-                    theWorld.ListCountries();
+                    theWorld.ListCountries(theWorld.countryList);
                     break;
                 case 4:
+                    WriteCharByChar("Ha elegido ordenar por población");
+                    theWorld.OrderByPopulation();
+                    break;
+                case 5:
                     string[] textLines = new string[] {
                                                         "Ha elegido finalizar el programa.",
                                                         "Pulse cualquier tecla para finalizar el programa."};
