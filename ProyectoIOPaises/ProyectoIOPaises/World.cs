@@ -71,11 +71,12 @@ namespace ProyectoIOPaises
 
         }
 
-        public void SearchCountry()
+        public Country SearchCountry()
         {
             string[] textLines = new string[] {
                                                 "Que país desea buscar?",
                                                 "Introduzca el nombre del país que desea buscar"};
+            Country searchedCountry = null;
             Program.WriteCharByChar(textLines);
             string countryName = Console.ReadLine();
             bool found = false;
@@ -86,11 +87,18 @@ namespace ProyectoIOPaises
                 {
                     found = true;
                     Program.WriteCharByChar("El país esta en la lista.");
+                    searchedCountry = countryList[i];
                 }
                 i++;
             }
 
-            if (!found) Program.WriteCharByChar("El país no esta en la lista");
+            if (!found)
+            {
+                Program.WriteCharByChar("El país no esta en la lista");
+                searchedCountry = null;
+            }
+
+            return searchedCountry;
         }
 
 
@@ -119,6 +127,49 @@ namespace ProyectoIOPaises
             ListCountries(orderedByPopulationCountryList);
         }
 
+        public void AddMonuments()
+        {
+                Program.WriteCharByChar("¿A que país quiere añadir las ciudades?");
+
+           Country countryToAddCities = SearchCountry();
+            if(countryToAddCities != null)
+            {
+                int i = 0;
+                string[] phrases = new string[] {   "Recuerde que como máximo puede añadir 5 ciudades, las demás que se añadan no se tendrán en cuenta",
+                                                    "¿Que ciudades desea añadir?, separelas por /" };
+                Program.WriteCharByChar(phrases);
+
+                string citiesToAddString = Console.ReadLine();
+
+                string[] citiesToAddArray = citiesToAddString.Split('/');
+
+                while(i < countryToAddCities.cities.Length && citiesToAddArray[i] != null)
+                {
+                    countryToAddCities.cities[i] = citiesToAddArray[i];
+                    i++;
+                }
+                int citiesNum = 0;
+                i = 0;
+                while(i < countryToAddCities.cities.Length && countryToAddCities.cities[i] != null)
+                {
+                    if(countryToAddCities.cities[i] != null)
+                    {
+                        citiesNum++;
+                    }
+                    i++;
+                }
+
+                Program.WriteCharByChar("El país " +countryToAddCities.name+ "tiene " +citiesNum+ ":");
+                i = 0;
+                while(i < citiesNum)
+                {
+                     Program.WriteCharByChar(countryToAddCities.cities[i]);
+                     i++;
+                }
+
+            }
+
+        }
 
         public void SaveDataOnFile(string fileName, Country theCountry)
         {

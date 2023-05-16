@@ -57,14 +57,15 @@ namespace ProyectoIOPaises
                                                     "2 - Buscar país.", 
                                                     "3 - Listar paises.",
                                                     "4 - Ordenar por población",
-                                                    "5 - Finalizar",
+                                                    "5 - Añadir ciudades",
+                                                    "6 - Finalizar",
                                                     "Intruduzca la opción:"};
                 WriteCharByChar(textLines);
 
             string optionString = Console.ReadLine();
 
             if(!Int32.TryParse(optionString, out theOption)) theOption = 0;
-            if (theOption < 1 || theOption > 5) {
+            if (theOption < 1 || theOption > 6) {
                     textLines = new string[] {  "La opción debe estar comprendida entre 1 y 4" ,
                                                 "Pulse cualquier tecla"};
                     WriteCharByChar(textLines);
