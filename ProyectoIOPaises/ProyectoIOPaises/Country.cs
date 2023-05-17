@@ -12,6 +12,7 @@ namespace ProyectoIOPaises
         public string capital = "Madrid";
         public string population = "47.615.034";
         public string surface = "505.944";
+        public bool hasCities = false;
         public string[] cities = new string[5];
 
         /// <summary>

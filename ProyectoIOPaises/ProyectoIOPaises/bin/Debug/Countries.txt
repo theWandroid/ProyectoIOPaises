@@ -1,3 +1,5 @@
 noruega/oslo/5.488.984/323.802
 suecia/estocolmo/10.343.403/450.295
-finlandia/helsinki/5.549.184/338.145
+finlandia/helsinki/5.549.184/338.145noruega/oslo/5.488.984/323.802/barcelona*madrid*
+noruega/oslo/5.488.984/323.802
+noruega/oslo/5.488.984/323.802
