@@ -28,6 +28,16 @@ namespace ProyectoIOPaises
             this.surface = theSurface;
         }
 
+        public Country(string theName, string theCapital, string thePopulation, string theSurface, bool theBoolCities, string theCities)
+        {
+            this.name = theName;
+            this.capital = theCapital;
+            this.population = thePopulation;
+            this.surface = theSurface;
+            this.hasCities = theBoolCities;
+            this.cities = theCities.Split('*');
+        }
+
         public void SetCountryData(string theName, string theCapital)
         {
             name = theName;
