@@ -13,12 +13,31 @@ namespace ProyectoIOPaises
     {
         public int numCountries = 0;
         public Country[] countryList = new Country[100];
-        
+        public bool awake = true;
       
         public void InsertCountry(Country theCountry)
         {
-            countryList[numCountries] = theCountry;
-            numCountries++;
+            int i = 0;
+            if (awake)
+            {
+                countryList[numCountries] = theCountry;
+                   numCountries++ ;
+            }
+                   
+            while (i < countryList.Length)
+            {
+                //Console.WriteLine(countryList[i].name);
+                //Console.WriteLine(theCountry.name);
+                if (countryList[i] != null)
+                {
+                    if (theCountry.name == countryList[i].name && numCountries != 0)
+                    {
+                        countryList[i] = theCountry;
+                    }
+                }
+                i++;
+            }
+
         }
 
         public void ListCountries(Country[] theCountryList)
@@ -220,6 +239,42 @@ namespace ProyectoIOPaises
                 citiesToAddString = Console.ReadLine();
 
                 string[] citiesToAddArray = citiesToAddString.Split('/');
+                bool isAlreadyInTheList = false;
+                int k = 0,
+                    j = 0,
+                    pos = 0;
+
+                if (countryToAddCities.hasCities)
+                {
+                    
+                    while (j < countryToAddCities.cities.Length)
+                    {
+                        k = 0;
+                        while (k < countryToAddCities.cities.Length && countryToAddCities.cities[k] != "")
+                        {
+                            if (citiesToAddArray[j] == countryToAddCities.cities[k])
+                            {
+                                Console.WriteLine("Ya esta en la lista");
+                                return;
+                            }
+                            k++;
+                        }
+                        j++;
+                    }
+                }
+
+                if (countryToAddCities.hasCities)
+                {
+                    j = 0;
+                    while(j < countryToAddCities.cities.Length && countryToAddCities.cities[j] != "")
+                    {
+                        i = j+1;
+                        j++;
+                    }
+                }
+
+                
+
                 if(citiesToAddArray.Length < countryToAddCities.cities.Length)
                 {
                     while (i < citiesToAddArray.Length)
@@ -314,10 +369,11 @@ namespace ProyectoIOPaises
                 int i = 0;
                 while (i < words.Length)
                 {
-                        if (words[4] != null)
+                         if (words[4] != "")
                         {
                             countryHasCities = true;
                         }
+                       
                     i++;
                 }
 

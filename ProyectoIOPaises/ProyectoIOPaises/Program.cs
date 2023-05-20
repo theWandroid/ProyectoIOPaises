@@ -35,6 +35,7 @@ namespace ProyectoIOPaises
 
             int option = 0;
             theWorld.ReadDataFromFile("Countries.txt");
+            theWorld.awake = false;
            
             while(option != 6)
             {
