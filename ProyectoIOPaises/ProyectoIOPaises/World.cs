@@ -292,6 +292,78 @@ namespace ProyectoIOPaises
 
         }
 
+        public void EraseCities()
+        {
+            Program.WriteCharByChar("¿A que país quiere eliminar las ciudades?");
+            string citiesToEraseString = "";
+            Country countryToEraseCities = SearchCountry(false);
+            if (countryToEraseCities != null)
+            {
+                int i = 0;
+                countryToEraseCities.hasCities = true;
+                Program.WriteCharByChar("¿Que ciudades desea borrar?, separelas por /");
+
+                citiesToEraseString = Console.ReadLine();
+
+                string[] citiesToEraseArray = citiesToEraseString.Split('/');
+                bool isAlreadyInTheList = false;
+                int k = 0,
+                    j = 0,
+                    pos = 0;
+
+                if (countryToEraseCities.citiesCounter < 5)
+                {
+                    if (countryToEraseCities.hasCities)
+                    {
+                        while (j < citiesToEraseArray.Length)
+                        {
+                            k = 0;
+                            while (k < countryToEraseCities.cities.Length && countryToEraseCities.cities[k] != "")
+                            {
+                                if (citiesToEraseArray[j] == countryToEraseCities.cities[k])
+                                {
+                                    Console.WriteLine("Esta en la lista");
+                                    break;
+                                }
+                                k++;
+                            }
+                            j++;
+                        }
+                    }
+
+
+                    i = 0;
+                    j = 0;
+                    while (i < citiesToEraseArray.Length)
+                    {
+                        if (countryToEraseCities.citiesCounter < 5)
+                        {
+                            countryToEraseCities.cities[countryToEraseCities.citiesCounter] = citiesToEraseArray[i].ToLower();
+                            countryToEraseCities.citiesCounter++;
+                        }
+                        i++;
+                    }
+                }
+                else
+                {
+                    Program.WriteCharByChar("Un país puede tener 5 ciudades como máximo");
+                }
+
+
+                Program.WriteCharByChar("El país " + CultureInfo.InvariantCulture.TextInfo.ToTitleCase(countryToEraseCities.name) + " tiene " + countryToEraseCities.citiesCounter + " ciudades:");
+                i = 0;
+                while (i < countryToEraseCities.citiesCounter)
+                {
+                    Program.WriteCharByChar(CultureInfo.InvariantCulture.TextInfo.ToTitleCase(countryToAddCities.cities[i]));
+                    i++;
+                }
+
+            }
+
+            //InsertCountry(new Country(countryToAddCities.name, countryToAddCities.capital, countryToAddCities.population, countryToAddCities.surface, true, citiesToAddString));
+            SaveDataOnFile("Countries.txt");
+        }
+
         public void SaveDataOnFile(string fileName)
         {
             StreamWriter file = new StreamWriter(fileName);
