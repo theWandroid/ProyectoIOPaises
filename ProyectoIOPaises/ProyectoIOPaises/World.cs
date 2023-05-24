@@ -50,21 +50,27 @@ namespace ProyectoIOPaises
 
                 if (theCountryList[i].hasCities)
                 {
-                    string citiesFullString = "";
-                    while (j < theCountryList[i].cities.Length)
+                    string citiesFullString = "";  
+                    if (theCountryList[i] != null)
                     {
-                        if (theCountryList[i].cities[j] != null)
+                        while (j < theCountryList[i].cities.Length)
                         {
-                            if (j < countryList[i].cities[j].Length - 1 && j != 0)
+                            if (theCountryList[i].cities[j] != null)
                             {
-                            citiesFullString += "\n\t" + CultureInfo.InvariantCulture.TextInfo.ToTitleCase(theCountryList[i].cities[j]);
+
+                                if (j < countryList[i].cities[j].Length - 1 && j != 0)
+                                {
+                                    citiesFullString += "\n\t" + CultureInfo.InvariantCulture.TextInfo.ToTitleCase(theCountryList[i].cities[j]);
+                                }
+                                else
+                                {
+                                    citiesFullString += "\t" + CultureInfo.InvariantCulture.TextInfo.ToTitleCase(theCountryList[i].cities[j]);
+                                }
+
+
                             }
-                            else
-                            {
-                            citiesFullString += "\t" + CultureInfo.InvariantCulture.TextInfo.ToTitleCase(theCountryList[i].cities[j]);
-                            }
+                            j++;
                         }
-                        j++;
                     }
                      textLines =  "Pais => " + CultureInfo.InvariantCulture.TextInfo.ToTitleCase(theCountryList[i].name) + "   Capital:" + CultureInfo.InvariantCulture.TextInfo.ToTitleCase(theCountryList[i].capital) + "    Población: " + theCountryList[i].population + "    Superficie => " + theCountryList[i].surface+"\n Ciudades:\n " +citiesFullString ;
                 }
@@ -192,31 +198,70 @@ namespace ProyectoIOPaises
         public void OrderByPopulation()
         {
             int i = 0,
-                j = 0;
+                j = 0,
+                k = 0,
+                counter = 0;
+            bool found = false;
             Country[] orderedByPopulationCountryList = new Country [countryList.Length];
+            Country[] helpingList = new Country[countryList.Length];
 
-
-
-
-
-            orderedByPopulationCountryList[i] = countryList[i];
-            while( i < countryList.Length && countryList[i] != null)
+            while (i < countryList.Length)
             {
-                orderedByPopulationCountryList[0] = countryList[0];
-                if (countryList[i] != null && orderedByPopulationCountryList[i] != null)
+                helpingList[i] = countryList[i];
+                if (countryList[i] != null)
                 {
-                   if (Convert.ToSingle(countryList[i].population) > Convert.ToSingle(orderedByPopulationCountryList[i].population))
-                    { 
-                        orderedByPopulationCountryList[i + 1] = orderedByPopulationCountryList[i];
-                    }
-                    orderedByPopulationCountryList[i] = countryList[i];
-
+                    counter++;
                 }
-                Console.WriteLine(i);
                 i++;
-                
             }
-            ListCountries(orderedByPopulationCountryList);
+
+            i = 0;
+
+            Country greater = helpingList[i];
+
+            Console.WriteLine("El contador de paises es " + counter);
+            while(k < counter)
+            {
+                i = 0;
+                while(i < helpingList.Length)
+                {
+                    if (helpingList[i] != null)
+                    {
+                        greater = helpingList[i];
+                    }
+                    i++;
+                }
+                i = 0;
+                while (i < helpingList.Length)
+                {
+                    if (helpingList[i] != null)
+                    {
+                        if (Convert.ToSingle(helpingList[i].population) > Convert.ToSingle(greater.population))
+                        {
+                            greater = helpingList[i];
+                        }
+
+                    }
+                    i++;
+                }
+                i = 0;
+                while( i < helpingList.Length)
+                {
+                    if (helpingList[i] != null)
+                    {
+                        if (helpingList[i] == greater)
+                        {
+                            helpingList[i] = null;
+                        }
+                    }
+                    i++;
+                }
+                orderedByPopulationCountryList[j] = greater;
+                j++;
+                k++;
+
+            }
+           ListCountries(orderedByPopulationCountryList);
         }
 
         public void AddCities()
@@ -354,7 +399,7 @@ namespace ProyectoIOPaises
                 i = 0;
                 while (i < countryToEraseCities.citiesCounter)
                 {
-                    Program.WriteCharByChar(CultureInfo.InvariantCulture.TextInfo.ToTitleCase(countryToAddCities.cities[i]));
+                    Program.WriteCharByChar(CultureInfo.InvariantCulture.TextInfo.ToTitleCase(countryToEraseCities.cities[i]));
                     i++;
                 }
 

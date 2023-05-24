@@ -1,3 +1,3 @@
-suecia/estocolmo/10.343.403/450.295/sevilla*barcelona*madrid*caceres*malaga
+suecia/estocolmo/10.343.403/450.295/sevilla
 noruega/oslo/5.488.984/323.802/lugo
-finlandia/helsinki/5.536.146/338.424/barcelona*madrid
+finlandia/helsinki/5.536.146/338.424/barcelona
