@@ -1,3 +1,4 @@
-suecia/estocolmo/10.343.403/450.295/sevilla
-noruega/oslo/5.488.984/323.802/lugo
-finlandia/helsinki/5.536.146/338.424/barcelona
+suecia/estocolmo/10.343.403/450.295/
+noruega/oslo/5.488.984/323.802/
+finlandia/helsinki/5.536.146/338.424/
+dinamrca/copenhague/5.837.213/43.094/
