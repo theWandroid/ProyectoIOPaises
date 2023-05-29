@@ -5,6 +5,7 @@ using System.Linq;
 using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
+using System.Media;
 
 namespace ProyectoIOPaises
 {
@@ -36,8 +37,10 @@ namespace ProyectoIOPaises
             int option = 0;
             theWorld.ReadDataFromFile("Countries.txt");
             theWorld.awake = false;
-           
-            while(option != 6)
+            SoundPlayer mus = new SoundPlayer("ghibli_music.wav");
+                mus.PlayLooping();
+
+            while (option != 6)
             {
                 option = 0;
                 option = ShowMenu(option);
