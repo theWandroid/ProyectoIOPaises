@@ -21,7 +21,7 @@ namespace ProyectoIOPaises
             SoundPlayer mus = new SoundPlayer("ghibli_music.wav");
                 mus.PlayLooping();
 
-            while (option != 7)
+            while (option != 8)
             {
                 option = 0;
                 option = ShowMenu(option);
@@ -34,7 +34,7 @@ namespace ProyectoIOPaises
 
         static int ShowMenu(int theOption)
         {
-            while(theOption != 1 && theOption != 2 && theOption != 3 && theOption != 4 && theOption != 5 && theOption != 6 && theOption != 7)
+            while(theOption != 1 && theOption != 2 && theOption != 3 && theOption != 4 && theOption != 5 && theOption != 6 && theOption != 7 && theOption != 8)
             {
                 Console.Clear();
                 string[] textLines = new string[] { "Menu:",
@@ -44,14 +44,15 @@ namespace ProyectoIOPaises
                                                     "4 - Ordenar por población",
                                                     "5 - Añadir ciudades",
                                                     "6 - Borrar país",
-                                                    "7 - Finalizar",
+                                                    "7 - Buscar ciudad",
+                                                    "8 - Finalizar",
                                                     "Intruduzca la opción:"};
                 WriteCharByChar(textLines);
 
             string optionString = Console.ReadLine();
 
             if(!Int32.TryParse(optionString, out theOption)) theOption = 0;
-            if (theOption < 1 || theOption > 7) {
+            if (theOption < 1 || theOption > 8) {
                     textLines = new string[] {  "La opción debe estar comprendida entre 1 y 6" ,
                                                 "Pulse cualquier tecla"};
                     WriteCharByChar(textLines);
@@ -76,7 +77,7 @@ namespace ProyectoIOPaises
                     break;
                 case 3:
                     WriteCharByChar("Ha elegido listar países");
-                    theWorld.ListCountries(theWorld.countryList);
+                    theWorld.ListCountries(theWorld.countryList, true);
                     break;
                 case 4:
                     WriteCharByChar("Ha elegido ordenar por población");
@@ -91,6 +92,10 @@ namespace ProyectoIOPaises
                     theWorld.EraseCountry();
                     break;
                 case 7:
+                    WriteCharByChar("Ha elegido buscar ciudad");
+                    theWorld.SearchCity();
+                    break;
+                case 8:
                     string[] textLines = new string[] {
                                                         "Ha elegido finalizar el programa.",
                                                         "Pulse cualquier tecla para finalizar el programa."};

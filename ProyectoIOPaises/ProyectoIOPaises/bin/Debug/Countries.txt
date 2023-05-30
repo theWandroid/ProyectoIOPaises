@@ -8,9 +8,9 @@ irlanda/dublin/5.123.456/70.273/
 paises bajos/amsterdam/17.302.116/41.543/
 bélgica/bruselas/11.550.039/30.528/
 luxemburgo/luxemburgo/626.108/2.586/
-francia/parís/67.407.241/675.417/
+francia/parís/67.407.241/675.417/lyon*genova
 monaco/monaco/38.100/2/
-españa/madrid/48.196.693/505.944/
 portugal/lisboa/10.352.042/92.212/
 alemania/berlín/84.270.625/357.375/
 china/pekin/123/123/
+españa/madrid/123/123/barcelona*madrid*sevilla

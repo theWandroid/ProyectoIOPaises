@@ -47,7 +47,7 @@ namespace ProyectoIOPaises
 
         }
 
-        public void ListCountries(Country[] theCountryList)
+        public void ListCountries(Country[] theCountryList, bool showCities)
         {
             int i = 0;
             string textLines;
@@ -55,28 +55,30 @@ namespace ProyectoIOPaises
             {
                 int j = 0;
 
-                if (theCountryList[i].hasCities)
+                if (theCountryList[i].hasCities && showCities)
                 {
                     string citiesFullString = "";  
                     if (theCountryList[i] != null)
+
                     {
-                        while (j < theCountryList[i].cities.Length)
-                        {
-                            if (theCountryList[i].cities[j] != null)
+
+                            while (j < theCountryList[i].cities.Length)
                             {
-
-                                if (j < countryList[i].cities[j].Length - 1 && j != 0)
+                                if (theCountryList[i].cities[j] != null)
                                 {
-                                    citiesFullString += "\n\t" + CultureInfo.InvariantCulture.TextInfo.ToTitleCase(theCountryList[i].cities[j]);
-                                }
-                                else
-                                {
-                                    citiesFullString += "\t" + CultureInfo.InvariantCulture.TextInfo.ToTitleCase(theCountryList[i].cities[j]);
-                                }
+
+                                    if (j < countryList[i].cities[j].Length - 1 && j != 0)
+                                    {
+                                        citiesFullString += "\n\t" + CultureInfo.InvariantCulture.TextInfo.ToTitleCase(theCountryList[i].cities[j]);
+                                    }
+                                    else
+                                    {
+                                        citiesFullString += "\t" + CultureInfo.InvariantCulture.TextInfo.ToTitleCase(theCountryList[i].cities[j]);
+                                    }
 
 
-                            }
-                            j++;
+                                }
+                                j++;
                         }
                     }
                      textLines =  "Pais => " + CultureInfo.InvariantCulture.TextInfo.ToTitleCase(theCountryList[i].name) + "   Capital:" + CultureInfo.InvariantCulture.TextInfo.ToTitleCase(theCountryList[i].capital) + "    Población: " + theCountryList[i].population + "    Superficie => " + theCountryList[i].surface+"\n Ciudades:\n " +citiesFullString ;
@@ -251,6 +253,7 @@ namespace ProyectoIOPaises
                         if (Convert.ToSingle(helpingList[i].population) > Convert.ToSingle(greater.population))
                         {
                             greater = helpingList[i];
+
                         }
 
                     }
@@ -269,11 +272,12 @@ namespace ProyectoIOPaises
                     i++;
                 }
                 orderedByPopulationCountryList[j] = greater;
+
                 j++;
                 k++;
 
             }
-           ListCountries(orderedByPopulationCountryList);
+           ListCountries(orderedByPopulationCountryList, false);
         }
 
         public void AddCities()
@@ -419,6 +423,47 @@ namespace ProyectoIOPaises
 
             //InsertCountry(new Country(countryToAddCities.name, countryToAddCities.capital, countryToAddCities.population, countryToAddCities.surface, true, citiesToAddString));
             SaveDataOnFile("Countries.txt");
+        }
+
+        public void SearchCity()
+        {
+            int i = 0;
+            Program.WriteCharByChar("Que ciudad quieres busar?");
+            string searchedCity = Console.ReadLine().Trim();
+            bool found = false;
+
+            while(i < countryList.Length && countryList[i] != null)
+            {
+               
+                if(countryList[i] != null)
+                {
+                    if (countryList[i].hasCities)
+                    {
+                        int j = 0;
+                        while (j < countryList[i].citiesCounter)
+                        {
+                            if (countryList[i].cities[j] != null)
+                            {
+                                if (countryList[i].cities[j] == searchedCity)
+                                {
+                                    found = true;
+                                    Program.WriteCharByChar("La ciudad " + CultureInfo.InvariantCulture.TextInfo.ToTitleCase(countryList[i].name) + " tiene la ciudad " + CultureInfo.InvariantCulture.TextInfo.ToTitleCase(searchedCity));
+                                }
+                               
+                            }
+                            j++;
+                        }
+                        
+                    }
+                }
+              
+                i++;
+            }
+
+            if (!found)
+            {
+                Program.WriteCharByChar("No hay ninguna ciudad con ese nombre");
+            }
         }
 
         public void SaveDataOnFile(string fileName)

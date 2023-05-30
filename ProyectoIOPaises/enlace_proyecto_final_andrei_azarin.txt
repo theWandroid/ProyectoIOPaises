@@ -1,0 +1,11 @@
+Buenos dias Jesica,
+
+Te dejo el enlace a mi drive donde he colgado la carpeta con el proyecto. Lei en la pizarra que habia que colgar un Readme.txt, el archivo .cs y el archivo de musica. Ya que lo he hecho en varios archivos .cs, una clase Country.cs, con la estructura que debe tener un país, una clase World que contiene un vector con el listado de los paises, y la clase principal program, que muestra el menu. El archivo readme.txt y el archivo de audio estan en la carpeta debug del proyecto. 
+
+Enlace a mi drive:
+https://drive.google.com/drive/folders/1OP8Y9ofvCHKaBN5AFRwzvl9_t94hEAzH?usp=sharing
+
+Enlace al repositorio del proyecyo que he creado en mi perfil de github:
+https://github.com/theWandroid/ProyectoIOPaises
+
+Si no lo puedes ver correctamente dimelo.
