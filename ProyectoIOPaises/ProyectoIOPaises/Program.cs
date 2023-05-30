@@ -15,32 +15,13 @@ namespace ProyectoIOPaises
 
         static void Main(string[] args)
         {
-            /*
-            Country countryOne = new Country("España", "Madrid");
-            //countryOne.SetCountryData("España", "Madrid");
-            Country countryTwo = new Country("Portugal", "Lisboa");
-            //countryTwo.SetCountryData("Portugal", "Lisboa");
-
-            
-            theWorld.InsertCountry(countryOne);
-            theWorld.InsertCountry(countryTwo);
-
-            theWorld.ListCountries();
-            theWorld.SaveDataOnFile("Countries.txt");
-            
-
-            // Lee el arvhivo Countries.txt y muestra lo que hay en el
-            //theWorld.ListCountries();
-
-            */
-
             int option = 0;
             theWorld.ReadDataFromFile("Countries.txt");
             theWorld.awake = false;
             SoundPlayer mus = new SoundPlayer("ghibli_music.wav");
                 mus.PlayLooping();
 
-            while (option != 6)
+            while (option != 7)
             {
                 option = 0;
                 option = ShowMenu(option);

@@ -2,3 +2,15 @@ suecia/estocolmo/10.343.403/450.295/
 noruega/oslo/5.488.984/323.802/
 finlandia/helsinki/5.536.146/338.424/
 dinamrca/copenhague/5.837.213/43.094/
+islandia/reikiavik/366.425/103.000/
+gran bretaña/londres/63.786.00/209.331/
+irlanda/dublin/5.123.456/70.273/
+paises bajos/amsterdam/17.302.116/41.543/
+bélgica/bruselas/11.550.039/30.528/
+luxemburgo/luxemburgo/626.108/2.586/
+francia/parís/67.407.241/675.417/
+monaco/monaco/38.100/2/
+españa/madrid/48.196.693/505.944/
+portugal/lisboa/10.352.042/92.212/
+alemania/berlín/84.270.625/357.375/
+china/pekin/123/123/

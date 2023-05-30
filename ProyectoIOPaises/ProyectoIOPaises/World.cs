@@ -15,7 +15,7 @@ namespace ProyectoIOPaises
         public Country[] countryList = new Country[100];
         public bool awake = true;
       
-        public void InsertCountry(Country theCountry)
+        public void InsertCountry(Country theCountry, bool newCountry)
         {
             int i = 0;
             if (awake)
@@ -24,7 +24,7 @@ namespace ProyectoIOPaises
                    numCountries++ ;
             }
                    
-            while (i < countryList.Length) 
+            while (i < countryList.Length && !newCountry) 
             {
                 //Console.WriteLine(countryList[i].name);
                 //Console.WriteLine(theCountry.name);
@@ -35,7 +35,14 @@ namespace ProyectoIOPaises
                         countryList[i] = theCountry;
                     }
                 }
+
                 i++;
+            }
+
+            if (newCountry)
+            {
+                countryList[numCountries] = theCountry;
+                numCountries++;
             }
 
         }
@@ -78,6 +85,7 @@ namespace ProyectoIOPaises
                 {
 
                     textLines = "Pais => " + CultureInfo.InvariantCulture.TextInfo.ToTitleCase(theCountryList[i].name) + "   Capital:" + CultureInfo.InvariantCulture.TextInfo.ToTitleCase(theCountryList[i].capital) + "    Población: " + theCountryList[i].population + "    Superficie => " + theCountryList[i].surface ;
+                    //Console.WriteLine(numCountries);
 
                 }
                 //Para poder poner separadores de miles y millones a un int podemos recurrir a la forma n.ToString(#,##0.00) o (#.##0,00)
@@ -94,12 +102,7 @@ namespace ProyectoIOPaises
                                                 "Introduce la superficie del país"};
             Program.WriteCharByChar(textLines[0]);
             string countryName = Console.ReadLine();
-            Program.WriteCharByChar(textLines[1]);
-            string countryCapital = Console.ReadLine();
-            Program.WriteCharByChar(textLines[2]);
-            string countryPopulation = Console.ReadLine();
-            Program.WriteCharByChar(textLines[3]);
-            string countrySurface = Console.ReadLine();
+           
             int i = 0;
             bool found = false;
             //Para saber si el nombre del país ya esta en la lista
@@ -119,7 +122,13 @@ namespace ProyectoIOPaises
             if (!found)
             {
                 Program.WriteCharByChar("Se va ha introducir el páís");
-                InsertCountry(new Country(countryName, countryCapital, countryPopulation, countrySurface));
+                Program.WriteCharByChar(textLines[1]);
+                string countryCapital = Console.ReadLine();
+                Program.WriteCharByChar(textLines[2]);
+                string countryPopulation = Console.ReadLine();
+                Program.WriteCharByChar(textLines[3]);
+                string countrySurface = Console.ReadLine();
+                InsertCountry(new Country(countryName, countryCapital, countryPopulation, countrySurface), true);
                 SaveDataOnFile("Countries.txt");
 
             }
@@ -139,7 +148,7 @@ namespace ProyectoIOPaises
                 {
                     if (countryToErase.name == countryList[i].name)
                     {
-                        i = j;
+                        j = i;
                         if (i < countryList.Length - 1)
                         {
                             countryList[i] = countryList[i + i];
@@ -161,7 +170,8 @@ namespace ProyectoIOPaises
                 }
 
             }
-            ListCountries(countryList);
+            SaveDataOnFile("Countries.txt");
+
         }
 
         public Country SearchCountry(bool normalSearch)
@@ -181,6 +191,8 @@ namespace ProyectoIOPaises
                     found = true;
                     Program.WriteCharByChar("El país esta en la lista.");
                     searchedCountry = countryList[i];
+                    Program.WriteCharByChar("Pais => " + CultureInfo.InvariantCulture.TextInfo.ToTitleCase(countryList[i].name) + "   Capital:" + CultureInfo.InvariantCulture.TextInfo.ToTitleCase(countryList[i].capital) + "    Población: " + countryList[i].population + "    Superficie => " + countryList[i].surface);
+
                 }
                 i++;
             }
@@ -277,7 +289,7 @@ namespace ProyectoIOPaises
                                                     "¿Que ciudades desea añadir?, separelas por /" };
                 Program.WriteCharByChar(phrases);
 
-                citiesToAddString = Console.ReadLine();
+                citiesToAddString = Console.ReadLine().Trim();
 
                 string[] citiesToAddArray = citiesToAddString.Split('/');
                 bool isAlreadyInTheList = false;
@@ -294,7 +306,7 @@ namespace ProyectoIOPaises
                             k = 0;
                             while (k < countryToAddCities.cities.Length && countryToAddCities.cities[k] != "")
                             {
-                                if (citiesToAddArray[j] == countryToAddCities.cities[k])
+                                if (citiesToAddArray[j].Trim() == countryToAddCities.cities[k])
                                 {
                                 Console.WriteLine("Ya esta en la lista");
                                 break;
@@ -309,7 +321,7 @@ namespace ProyectoIOPaises
                     {
                         if(countryToAddCities.citiesCounter < 5)
                         {
-                            countryToAddCities.cities[countryToAddCities.citiesCounter] = citiesToAddArray[i].ToLower();
+                            countryToAddCities.cities[countryToAddCities.citiesCounter] = citiesToAddArray[i].ToLower().Trim();
                         countryToAddCities.citiesCounter++;
                         }
                         i++;
@@ -348,7 +360,7 @@ namespace ProyectoIOPaises
                 countryToEraseCities.hasCities = true;
                 Program.WriteCharByChar("¿Que ciudades desea borrar?, separelas por /");
 
-                citiesToEraseString = Console.ReadLine();
+                citiesToEraseString = Console.ReadLine().Trim();
 
                 string[] citiesToEraseArray = citiesToEraseString.Split('/');
                 bool isAlreadyInTheList = false;
@@ -451,7 +463,7 @@ namespace ProyectoIOPaises
 
         public void ReadDataFromFile(string fileName)
         {
-            StreamReader file = new StreamReader(fileName, Encoding.Default);
+            StreamReader file = new StreamReader(fileName, Encoding.UTF8);
             string s = file.ReadLine();
 
             while (s != null)
@@ -472,12 +484,12 @@ namespace ProyectoIOPaises
 
                 if (countryHasCities)
                 {
-                    InsertCountry(new Country(words[0], words[1], words[2], words[3], true, words[4]));
+                    InsertCountry(new Country(words[0], words[1], words[2], words[3], true, words[4]), false);
 
                 }
                 else
                 {
-                    InsertCountry(new Country(words[0], words[1], words[2], words[3]));
+                    InsertCountry(new Country(words[0], words[1], words[2], words[3]), false);
 
                 }
 
