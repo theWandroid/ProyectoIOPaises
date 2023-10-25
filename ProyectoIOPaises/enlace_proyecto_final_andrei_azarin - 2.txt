@@ -1,0 +1,11 @@
+Buenos dias Jesica,
+
+Te dejo el enlace a mi drive donde he colgado la carpeta con el proyecto. He añadido una nueva función, la de "buscar ciudad" como Ampiación Individual, que se encuentra en World.cs, llamada "SearchCity" que hice la tarde del 30/05 con Ruben.
+
+Enlace a mi drive:
+https://drive.google.com/drive/folders/1OP8Y9ofvCHKaBN5AFRwzvl9_t94hEAzH?usp=sharing
+
+Enlace al repositorio del proyecyo que he creado en mi perfil de github:
+https://github.com/theWandroid/ProyectoIOPaises
+
+Si no lo puedes ver correctamente dimelo.
